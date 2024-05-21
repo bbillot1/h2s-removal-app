@@ -1,6 +1,7 @@
 import math
 import pandas as pd
 import streamlit as st
+import matplotlib.pyplot as plt
 
 # Set page configuration
 st.set_page_config(page_title="H2S Removal Vessel Calculator", layout="wide")
@@ -77,18 +78,16 @@ st.write("### SV and LV for Different Heights")
 st.dataframe(df)
 
 # Optional: Add a plot for better visualization
-import matplotlib.pyplot as plt
-
 fig, ax1 = plt.subplots(figsize=(10, 6))
 
-color = 'tab:green'
+color = 'limegreen'
 ax1.set_xlabel('Height (ft)')
 ax1.set_ylabel('Space Velocity (hr^-1)', color=color)
 ax1.plot(df['Height (ft)'], df['Space Velocity (hr^-1)'], color=color)
 ax1.tick_params(axis='y', labelcolor=color)
 
 ax2 = ax1.twinx()
-color = 'tab:black'
+color = 'black'
 ax2.set_ylabel('Linear Velocity (ft/hr)', color=color)
 ax2.plot(df['Height (ft)'], df['Linear Velocity (ft/hr)'], color=color)
 ax2.tick_params(axis='y', labelcolor=color)
